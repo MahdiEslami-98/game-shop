@@ -71,8 +71,13 @@ const config: Config = {
         "bottom-3": "linear-gradient(to bottom, #4E95FF, #9CA0FF)",
         "bottom-4": "linear-gradient(to bottom, #9773FF, #E5ADFF)",
       },
+      borderRadius: {
+        lg: "var(--radius)",
+        md: "calc(var(--radius) - 2px)",
+        sm: "calc(var(--radius) - 4px)",
+      },
     },
   },
-  plugins: [],
+  plugins: [require("tailwindcss-animate")],
 };
 export default config;

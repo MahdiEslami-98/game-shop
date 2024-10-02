@@ -3,6 +3,7 @@ import "./globals.css";
 import QueryProvider from "@/lib/reactQueryConfig";
 import { ReactNode } from "react";
 import ThemeContextProvider from "@/context/themeContext";
+import { Toaster } from "@/components/ui/toaster";
 
 export const metadata: Metadata = {
   title: "GameShop",
@@ -20,6 +21,7 @@ export default function RootLayout({
         <QueryProvider>
           <ThemeContextProvider>{children}</ThemeContextProvider>
         </QueryProvider>
+        <Toaster />
       </body>
     </html>
   );

@@ -73,7 +73,7 @@ const Footer = () => {
             بهترین نحو و در بهترین قیمت.....
           </p>
         </div>
-        <div className="grid grid-cols-1 gap-y-2 md:grid-cols-2 lg:grid-cols-3 lg:items-center lg:gap-x-4">
+        <div className="grid grid-cols-1 gap-y-2 md:grid-cols-2 md:gap-4 lg:grid-cols-3 lg:items-center">
           <div className="flex h-20 w-full items-center justify-center rounded-2xl border-2 border-white bg-white lg:h-full">
             <Image
               src={`/file_20191206_1550_36991 1.png`}

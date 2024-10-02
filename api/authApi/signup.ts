@@ -1,16 +1,14 @@
 import { ISignupReq, ISignupRes } from "@/types/api/auth";
 import apiRoutes from "../apiRoutes";
 import axiosInstance from "../axiosInstance";
+import { AxiosError, AxiosResponse } from "axios";
 
-const signup = async (data: { username: string; password: string }) => {
+const signup = async (data: ISignupReq) => {
   try {
-    const response = await axiosInstance.post<ISignupReq, ISignupRes>(
-      apiRoutes.auth.signup,
-      data,
-    );
-    return response;
+    const response = await axiosInstance.post(apiRoutes.auth.signup, data);
+    return response as AxiosResponse<ISignupRes>;
   } catch (error) {
-    return error;
+    throw error as AxiosError;
   }
 };
 
