@@ -1,4 +1,4 @@
-import { AxiosError } from "axios";
+import { AxiosError, AxiosResponse } from "axios";
 import apiRoutes from "../apiRoutes";
 import axiosInstance from "../axiosInstance";
 import Cookies from "js-cookie";
@@ -6,11 +6,11 @@ import { IUserByIdRes } from "@/types/api/user";
 
 const getUserById = async (id: string) => {
   try {
-    const response = await axiosInstance.get<IUserByIdRes>(
+    const response: AxiosResponse<IUserByIdRes> = await axiosInstance.get(
       apiRoutes.users + `/${id}`,
       {
         headers: {
-          Authorization: `Bearer ${Cookies.get("accessToken")}`,
+          Authorization: `Bearer ${Cookies.get("access_token")}`,
         },
       },
     );

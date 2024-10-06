@@ -4,21 +4,17 @@ import apiRoutes from "../apiRoutes";
 import Cookies from "js-cookie";
 import { IOrders } from "@/types/api/order";
 
-const getAllOrder = async (
-  status = "",
-  page = 1,
-  sort = "-createdAt",
-) => {
+const getAllOrder = async (status = "", page = 1, sort = "-createdAt") => {
   let stat = "";
   if (status) {
     stat = `&deliveryStatus=${status}`;
   }
   try {
-    const response = await axiosInstance.get<IOrders>(
+    const response: AxiosResponse<IOrders> = await axiosInstance.get(
       `${apiRoutes.orders}?limit=10&page=${page}&sort=${sort}${stat}`,
       {
         headers: {
-          Authorization: `Bearer ${Cookies.get("accessToken")}`,
+          Authorization: `Bearer ${Cookies.get("access_token")}`,
         },
       },
     );

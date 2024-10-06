@@ -1,11 +1,7 @@
-import { ReactNode } from "react";
+import DashLayout from "@/components/Layouts/managerLayout";
 
-const DashboardLayout = ({ children }: { children: ReactNode }) => {
-  return (
-    <div className="h-full bg-gradient-to-r from-[#FFF5F7] to-[#F5F9FF]">
-      <div className="container mx-auto px-4">{children}</div>
-    </div>
-  );
+const DashboardLayout = ({ children }: { children: React.ReactNode }) => {
+  return <DashLayout>{children}</DashLayout>;
 };
 
 export default DashboardLayout;

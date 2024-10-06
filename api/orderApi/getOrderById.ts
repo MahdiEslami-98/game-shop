@@ -6,11 +6,11 @@ import { IGetOrderByIdRes } from "@/types/api/order";
 
 const getOrderById = async (id: string) => {
   try {
-    const response = await axiosInstance.get<IGetOrderByIdRes>(
+    const response: AxiosResponse<IGetOrderByIdRes> = await axiosInstance.get(
       `${apiRoutes.orders}/${id}`,
       {
         headers: {
-          Authorization: `Bearer ${Cookies.get("accessToken")}`,
+          Authorization: `Bearer ${Cookies.get("access_token")}`,
         },
       },
     );

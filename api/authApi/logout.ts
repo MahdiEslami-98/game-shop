@@ -7,7 +7,7 @@ const logout = async () => {
   try {
     await axiosInstance.get(apiRoutes.auth.logout, {
       headers: {
-        Authorization: `Bearer ${Cookies.get("accessToken")}`,
+        Authorization: `Bearer ${Cookies.get("access_token")}`,
       },
     });
   } catch (error) {

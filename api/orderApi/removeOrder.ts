@@ -7,7 +7,7 @@ const removeOrder = async (id: string) => {
   try {
     const res = await axiosInstance.delete(`${apiRoutes.orders}/${id}`, {
       headers: {
-        Authorization: `Bearer ${Cookies.get("accessToken")}`,
+        Authorization: `Bearer ${Cookies.get("access_token")}`,
       },
     });
   } catch (error) {

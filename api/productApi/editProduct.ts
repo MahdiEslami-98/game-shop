@@ -1,17 +1,17 @@
 import axiosInstance from "../axiosInstance";
 import apiRoutes from "../apiRoutes";
 import Cookies from "js-cookie";
-import { AxiosError } from "axios";
+import { AxiosError, AxiosResponse } from "axios";
 import { IEditProductRes } from "@/types/api/product";
 
 const editProduct = async (id: string, data: FormData) => {
   try {
-    const res = await axiosInstance.patch<FormData, IEditProductRes>(
+    const res: AxiosResponse<IEditProductRes> = await axiosInstance.patch(
       `${apiRoutes.products}/${id}`,
       data,
       {
         headers: {
-          Authorization: `Bearer ${Cookies.get("accessToken")}`,
+          Authorization: `Bearer ${Cookies.get("access_token")}`,
         },
       },
     );
