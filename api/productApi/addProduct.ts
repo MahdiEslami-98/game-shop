@@ -1,4 +1,4 @@
-import { AxiosError } from "axios";
+import { AxiosError, AxiosResponse } from "axios";
 import axiosInstance from "../axiosInstance";
 import apiRoutes from "../apiRoutes";
 import Cookies from "js-cookie";
@@ -6,12 +6,12 @@ import { IAddProduct } from "@/types/api/product";
 
 const addProduct = async (data: FormData) => {
   try {
-    const res = await axiosInstance.post<FormData, IAddProduct>(
+    const res: AxiosResponse<IAddProduct> = await axiosInstance.post(
       apiRoutes.products,
       data,
       {
         headers: {
-          Authorization: `Bearer ${Cookies.get("accessToken")}`,
+          Authorization: `Bearer ${Cookies.get("access_token")}`,
         },
       },
     );

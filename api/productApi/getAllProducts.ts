@@ -1,4 +1,4 @@
-import { AxiosError } from "axios";
+import { AxiosError, AxiosResponse } from "axios";
 import axiosInstance from "../axiosInstance";
 import apiRoutes from "../apiRoutes";
 import { IProductsRes } from "@/types/api/product";
@@ -15,7 +15,7 @@ const getAllProducts = async (
   }
 
   try {
-    const response = await axiosInstance.get<IProductsRes>(
+    const response: AxiosResponse<IProductsRes> = await axiosInstance.get(
       `${apiRoutes.products}?page=${page}&limit=${limit}&sort=${sort}${c}`,
     );
     return response;

@@ -11,7 +11,7 @@ const addOrder = async (data: IAddOrderReq) => {
       data,
       {
         headers: {
-          Authorization: `Bearer ${Cookies.get("accessToken")}`,
+          Authorization: `Bearer ${Cookies.get("access_token")}`,
         },
       },
     );

@@ -5,12 +5,12 @@ import axiosInstance from "../axiosInstance";
 import { IEditOrderReq, IEditOrderRes } from "@/types/api/order";
 const editOrder = async (id: string, data: IEditOrderReq) => {
   try {
-    const response = await axiosInstance.patch<IEditOrderReq, IEditOrderRes>(
+    const response: AxiosResponse<IEditOrderRes> = await axiosInstance.patch(
       `${apiRoutes.orders}/${id}`,
       data,
       {
         headers: {
-          Authorization: `Bearer ${Cookies.get("accessToken")}`,
+          Authorization: `Bearer ${Cookies.get("access_token")}`,
         },
       },
     );

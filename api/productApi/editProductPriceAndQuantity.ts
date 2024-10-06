@@ -2,7 +2,7 @@ import {
   IEditPriceAndQuantityRes,
   IEditProductPriceAndQuantityData,
 } from "@/types/api/product";
-import { AxiosError } from "axios";
+import { AxiosError, AxiosResponse } from "axios";
 import axiosInstance from "../axiosInstance";
 import apiRoutes from "../apiRoutes";
 import Cookies from "js-cookie";
@@ -20,15 +20,16 @@ const editProductPriceAndQuantity = async (
         if (item.quantity) {
           myForm.append("quantity", item.quantity);
         }
-        const res = await axiosInstance.patch<IEditPriceAndQuantityRes>(
-          `${apiRoutes.products}/${item.id}`,
-          myForm,
-          {
-            headers: {
-              Authorization: `Bearer ${Cookies.get("accessToken")}`,
+        const res: AxiosResponse<IEditPriceAndQuantityRes> =
+          await axiosInstance.patch(
+            `${apiRoutes.products}/${item.id}`,
+            myForm,
+            {
+              headers: {
+                Authorization: `Bearer ${Cookies.get("access_token")}`,
+              },
             },
-          },
-        );
+          );
         return res;
       }),
     );

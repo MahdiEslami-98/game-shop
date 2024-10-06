@@ -1,11 +1,11 @@
-import { AxiosError } from "axios";
+import { AxiosError, AxiosResponse } from "axios";
 import axiosInstance from "../axiosInstance";
 import apiRoutes from "../apiRoutes";
 import { IProductByIdRes } from "@/types/api/product";
 
 const getProductById = async (id: string) => {
   try {
-    const res = await axiosInstance.get<IProductByIdRes>(
+    const res: AxiosResponse<IProductByIdRes> = await axiosInstance.get(
       `${apiRoutes.products}/${id}`,
     );
     return res;
