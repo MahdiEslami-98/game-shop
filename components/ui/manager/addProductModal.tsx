@@ -10,6 +10,7 @@ import SubcategoryOption from "./subcategoryOption";
 import Button from "@/components/Button";
 import ReactQuill from "react-quill";
 import { modules } from "@/lib/reactQuillModules";
+import "react-quill/dist/quill.snow.css";
 
 const AddProductModal = ({
   setOpen,
@@ -462,11 +463,13 @@ const AddProductModal = ({
           />
         </div>
       </div>
-      <div>
-        <label htmlFor="description">توضیحات :</label>
+      <div dir="ltr" className="">
+        <label dir="rtl" className="block" htmlFor="description">
+          توضیحات :
+        </label>
         <ReactQuill
           theme="snow"
-          className="left-to-right max-w-[550px]"
+          className="max-h-[300px] max-w-[550px] overflow-y-auto"
           modules={modules}
           value={formData.description}
           onChange={(value) =>

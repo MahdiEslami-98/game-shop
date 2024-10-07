@@ -11,6 +11,7 @@ import { useEffect, useState } from "react";
 import ReactQuill from "react-quill";
 import CategoryOption from "./categoryOption";
 import SubcategoryOption from "./subcategoryOption";
+import "react-quill/dist/quill.snow.css";
 
 const EditProductModal = ({
   id,

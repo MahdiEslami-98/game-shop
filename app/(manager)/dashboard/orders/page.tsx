@@ -85,6 +85,7 @@ const OrdersPage = () => {
                     <Modal
                       setIsOpen={setIsOpen}
                       isOpen={isOpen}
+                      className="max-h-screen w-full sm:w-[600px] sm:max-w-[600px]"
                       text="بررسی سفارش"
                     >
                       <OrderModal id={item._id} />

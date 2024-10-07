@@ -33,15 +33,14 @@ const DashboardAllPrices = () => {
   return (
     <>
       <div className="flex justify-between rounded-lg bg-white p-2 shadow-sm">
-        <div>
-          <p className="pr-8 text-xl md:text-2xl">کالاها</p>
-        </div>
+        <p className="pr-8 text-xl md:text-2xl">کالاها</p>
         <div>
           <Modal
             isOpen={isOpen}
             setIsOpen={setIsOpen}
             text="افزودن کالا +"
-            triggerClass="bg-sky-500 rounded-lg px-3 py-2 text-sm text-white w-[900px] max-w-[900px]"
+            className="max-h-screen w-full sm:w-[600px] sm:max-w-[600px]"
+            triggerClass="bg-sky-500 rounded-lg px-3 py-2 text-sm text-white "
           >
             <AddProductModal setOpen={setIsOpen} />
           </Modal>
@@ -86,6 +85,7 @@ const DashboardAllPrices = () => {
                     <Modal
                       isOpen={openEditModal}
                       setIsOpen={setOpenEditModal}
+                      className="max-h-screen w-full sm:w-[600px] sm:max-w-[600px]"
                       text="ویرایش"
                     >
                       <EditProductModal
@@ -96,6 +96,7 @@ const DashboardAllPrices = () => {
                     <Modal
                       isOpen={openDeleteModal}
                       setIsOpen={setOpenDeleteModal}
+                      className="w-full sm:w-[400px] sm:max-w-[400px]"
                       text="حذف"
                     >
                       <DeleteModal

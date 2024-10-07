@@ -22,7 +22,7 @@ const Sidebar = ({
   toggleSidebar: () => void;
 }) => (
   <div
-    className={`absolute h-full bg-gray-800 transition-all duration-200 sm:static ${isOpen ? "bottom-0 right-0 top-0 w-64 p-4" : "w-0 sm:w-14 lg:w-64 lg:p-4"} overflow-hidden`}
+    className={`absolute z-50 h-full bg-gray-800 transition-all duration-200 sm:relative ${isOpen ? "bottom-0 right-0 top-0 w-64 p-4" : "w-0 sm:w-14 lg:w-64 lg:p-4"} overflow-hidden`}
   >
     <div className="mb-8 flex items-center justify-between">
       <h1
