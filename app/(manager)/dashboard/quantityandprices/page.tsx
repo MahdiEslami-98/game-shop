@@ -73,7 +73,6 @@ const DashboardQAndP = () => {
             ذخیره
           </Button>
           <Button
-            disabled={productsInfo.length < 1 || isPending ? true : false}
             className="rounded-md border border-black px-4 py-2 text-sm font-medium disabled:opacity-40"
             onClick={() => {
               setProductInfo([]);

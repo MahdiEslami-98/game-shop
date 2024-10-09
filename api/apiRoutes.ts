@@ -10,9 +10,9 @@ const apiRoutes = {
   orders: "/orders",
   categories: "/categories",
   subcategories: "/subcategories",
-  productImg: `${process.env.BASE_URL}/images/products/images/`,
-  productThumb: `${process.env.BASE_URL}/images/products/thumbnails/`,
-  categoryIcon: `${process.env.BASE_URL}/images/categories/icons/`,
+  productImg: `${process.env.NEXT_PUBLIC_BASE_URL}/images/products/images/`,
+  productThumb: `${process.env.NEXT_PUBLIC_BASE_URL}/images/products/thumbnails/`,
+  categoryIcon: `${process.env.NEXT_PUBLIC_BASE_URL}/images/categories/icons/`,
 };
 
 Object.freeze(apiRoutes);

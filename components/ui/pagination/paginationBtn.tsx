@@ -12,8 +12,10 @@ const PaginationBtn = ({
   return (
     <Button
       className={
-        "h-8 w-8 rounded-md border border-black " +
-        (index === currentPage ? "bg-black text-white" : "bg-white text-black")
+        "w-6 rounded-md border border-black py-1 " +
+        (index === currentPage
+          ? "bg-black text-white"
+          : "bg-white text-black hover:bg-gray-300 active:bg-black/65 active:text-white")
       }
       onClick={() => setPage(index)}
     >

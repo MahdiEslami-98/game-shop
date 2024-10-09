@@ -105,16 +105,16 @@ const Pagination = ({
     }
   };
   return (
-    <div className="-my-1 flex flex-row-reverse items-center justify-start gap-x-2">
+    <div className="-my-1 flex flex-row-reverse items-center justify-start gap-x-2 text-xs sm:text-sm">
       <Button
-        className="rounded-md border border-black px-2 py-1"
+        className="rounded-lg border border-black px-2 py-1 hover:bg-gray-300 active:bg-black/80 active:text-white"
         onClick={pervPageHandler}
       >
         قبلی
       </Button>
       {btns}
       <Button
-        className="rounded-md border border-black px-2 py-1"
+        className="rounded-lg border border-black px-2 py-1 hover:bg-gray-300 active:bg-black/80 active:text-white"
         onClick={nextPageHandler}
       >
         بعدی

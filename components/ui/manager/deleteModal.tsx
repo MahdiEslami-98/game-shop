@@ -1,18 +1,22 @@
+"use client";
 import removeProduct from "@/api/productApi/removeProduct";
 import Button from "@/components/Button";
 import { useToast } from "@/hooks/use-toast";
 import { queryClient } from "@/lib/reactQueryConfig";
 import { useMutation } from "@tanstack/react-query";
+import {
+  AlertDialog,
+  AlertDialogTrigger,
+  AlertDialogContent,
+  AlertDialogHeader,
+  AlertDialogTitle,
+  AlertDialogDescription,
+  AlertDialogFooter,
+  AlertDialogCancel,
+  AlertDialogAction,
+} from "@/components/ui/alert-dialog";
 
-const DeleteModal = ({
-  setIsOpen,
-  id,
-  name,
-}: {
-  setIsOpen: (isOpen: boolean) => void;
-  id: string;
-  name: string;
-}) => {
+const DeleteModal = ({ id, name }: { id: string; name: string }) => {
   const { toast } = useToast();
   const { mutate: deleteMutate } = useMutation({
     mutationFn: (value: string) => removeProduct(value),
@@ -31,23 +35,27 @@ const DeleteModal = ({
   });
 
   return (
-    <>
-      <div className="w-96">
-        <h3 className="mb-4 text-lg font-semibold">آیا مطمئن هستید؟</h3>
-        <p className="text-red-500">{name} به طور کامل حذف خواهد شد</p>
-      </div>
-      <div className="flex flex-row-reverse gap-x-2 pt-4">
-        <Button
-          className="w-20 rounded-lg bg-gray-800 py-2 text-white"
-          onClick={() => setIsOpen(false)}
-        >
-          انصراف
-        </Button>
-        <Button onClick={() => deleteMutate(id)} className="w-20 rounded-lg bg-alarm-100 py-2 text-white">
-          تایید
-        </Button>
-      </div>
-    </>
+    <AlertDialog>
+      <AlertDialogTrigger className="w-[50px] rounded-md bg-red-500 py-1 text-white">
+        حذف
+      </AlertDialogTrigger>
+      <AlertDialogContent className="">
+        <AlertDialogHeader>
+          <AlertDialogTitle className="text-right">
+            آیا مطمئن هستید؟
+          </AlertDialogTitle>
+          <AlertDialogDescription className="text-right">
+            {name} به طور کامل حذف خواهد شد
+          </AlertDialogDescription>
+        </AlertDialogHeader>
+        <AlertDialogFooter className="flex gap-x-2">
+          <AlertDialogCancel>انصراف</AlertDialogCancel>
+          <AlertDialogAction>
+            <Button onClick={() => deleteMutate(id)}>حذف</Button>
+          </AlertDialogAction>
+        </AlertDialogFooter>
+      </AlertDialogContent>
+    </AlertDialog>
   );
 };
 
