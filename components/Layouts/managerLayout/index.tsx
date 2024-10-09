@@ -12,7 +12,7 @@ const DashLayout = ({ children }: { children: React.ReactNode }) => {
       <Sidebar isOpen={sidebarOpen} toggleSidebar={toggleSidebar} />
       <div className="flex flex-1 flex-col overflow-hidden">
         <Header toggleSidebar={toggleSidebar} />
-        <main className="flex-1 overflow-y-auto overflow-x-hidden p-6">
+        <main className="flex-1 overflow-y-auto overflow-x-hidden px-3 py-4 sm:p-6">
           {children}
         </main>
       </div>

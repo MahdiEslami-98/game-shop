@@ -10,10 +10,8 @@ import {
   TableHeader,
   TableRow,
 } from "@/components/Table";
-import DeleteModal from "@/components/ui/manager/deleteModal";
 import OrderModal from "@/components/ui/manager/orderModal";
 import UserOrder from "@/components/ui/manager/userOrder";
-import Modal from "@/components/ui/modal";
 import Pagination from "@/components/ui/pagination";
 import Spinner from "@/components/ui/spinner";
 import numberTo3Digit from "@/util/numberTo3Digit";
@@ -82,13 +80,8 @@ const OrdersPage = () => {
                     {item.deliveryStatus ? "تحویل شده" : "در انتظار"}
                   </TableCell>
                   <TableCell className="px-1 text-center">
-                    <Modal
-                      setIsOpen={setIsOpen}
-                      isOpen={isOpen}
-                      text="بررسی سفارش"
-                    >
+                    
                       <OrderModal id={item._id} />
-                    </Modal>
                   </TableCell>
                 </TableRow>
               ))}

@@ -10,14 +10,15 @@ const LogoutBtn = (
 ) => {
   const logoutHandler = () => {
     logout()
-      .then(() => {
+      .then(() => {})
+      .catch(() => {})
+      .finally(() => {
         Cookies.remove("access_token");
         Cookies.remove("refresh_token");
         Cookies.remove("user_role");
         localStorage.removeItem("user_info");
         window.location.reload();
-      })
-      .catch((error) => {});
+      });
   };
 
   return (

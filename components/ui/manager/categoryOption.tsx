@@ -11,7 +11,7 @@ const CategoryOption = () => {
   return (
     <>
       {isSuccess &&
-        data &&
+        data?.data?.data &&
         data?.data?.data?.categories.map((cat: ICategoryEntity) => (
           <option key={cat._id} value={cat._id}>
             {cat.name}

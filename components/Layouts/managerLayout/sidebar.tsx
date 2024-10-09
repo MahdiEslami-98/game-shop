@@ -21,45 +21,51 @@ const Sidebar = ({
   isOpen: boolean;
   toggleSidebar: () => void;
 }) => (
-  <div
-    className={`absolute h-full bg-gray-800 transition-all duration-200 sm:static ${isOpen ? "bottom-0 right-0 top-0 w-64 p-4" : "w-0 sm:w-14 lg:w-64 lg:p-4"} overflow-hidden`}
-  >
-    <div className="mb-8 flex items-center justify-between">
-      <h1
-        className={`animate-fadeIn text-2xl font-bold text-white ${isOpen ? "block" : "hidden lg:block"}`}
-      >
-        پنل مدیریت
-      </h1>
-      <button onClick={toggleSidebar} className="text-white lg:hidden">
-        {isOpen && <X size={24} />}
-      </button>
-    </div>
-    <nav>
-      <ul className="space-y-2">
-        {sidebarItems.map((item, index) => (
-          <li key={index}>
-            <Link
-              href={item.href}
-              className="flex rounded p-2 text-gray-300 transition-colors duration-200 hover:bg-gray-700 hover:text-white"
-            >
-              <item.icon className="mx-2" size={18} />
-              <span
-                className={`animate-fadeIn ${isOpen ? "block" : "hidden lg:block"}`}
+  <>
+    <div
+      className={`${isOpen ? "fixed sm:hidden" : "hidden"} bottom-0 left-0 z-40 h-full w-full bg-[rgba(0,0,0,0.5)] transition-all duration-500`}
+      onClick={toggleSidebar}
+    />
+    <div
+      className={`absolute z-50 h-full bg-gray-800 transition-all duration-200 sm:relative ${isOpen ? "bottom-0 right-0 top-0 w-64 p-4" : "w-0 sm:w-14 lg:w-64 lg:p-4"} overflow-hidden`}
+    >
+      <div className="mb-8 flex items-center justify-between">
+        <h1
+          className={`animate-fadeIn text-2xl font-bold text-white ${isOpen ? "block" : "hidden lg:block"}`}
+        >
+          پنل مدیریت
+        </h1>
+        <button onClick={toggleSidebar} className="text-white lg:hidden">
+          {isOpen && <X size={24} />}
+        </button>
+      </div>
+      <nav>
+        <ul className="space-y-2">
+          {sidebarItems.map((item, index) => (
+            <li key={index}>
+              <Link
+                href={item.href}
+                className="flex rounded p-2 text-gray-300 transition-colors duration-200 hover:bg-gray-700 hover:text-white"
               >
-                {item.label}
-              </span>
-            </Link>
+                <item.icon className="mx-2" size={18} />
+                <span
+                  className={`animate-fadeIn ${isOpen ? "block" : "hidden lg:block"}`}
+                >
+                  {item.label}
+                </span>
+              </Link>
+            </li>
+          ))}
+          <li>
+            <LogoutBtn
+              className="w-full rounded text-alarm-75 transition-colors duration-200 hover:bg-gray-700 hover:text-alarm-100"
+              sapnClass={`animate-fadeIn ${isOpen ? "block" : "hidden lg:block"}`}
+            />
           </li>
-        ))}
-        <li>
-          <LogoutBtn
-            className="w-full rounded text-alarm-75 transition-colors duration-200 hover:bg-gray-700 hover:text-alarm-100"
-            sapnClass={`animate-fadeIn ${isOpen ? "block" : "hidden lg:block"}`}
-          />
-        </li>
-      </ul>
-    </nav>
-  </div>
+        </ul>
+      </nav>
+    </div>
+  </>
 );
 
 export default Sidebar;

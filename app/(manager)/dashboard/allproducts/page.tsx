@@ -1,4 +1,5 @@
 "use client";
+import apiRoutes from "@/api/apiRoutes";
 import getAllProducts from "@/api/productApi/getAllProducts";
 import {
   Table,
@@ -13,7 +14,6 @@ import AddProductModal from "@/components/ui/manager/addProductModal";
 import DeleteModal from "@/components/ui/manager/deleteModal";
 import EditProductModal from "@/components/ui/manager/editProductModal";
 import GetCategory from "@/components/ui/manager/getCategory";
-import Modal from "@/components/ui/modal";
 import Pagination from "@/components/ui/pagination";
 import Spinner from "@/components/ui/spinner";
 import { useQuery } from "@tanstack/react-query";
@@ -21,10 +21,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
 
-const DashboardAllPrices = () => {
-  const [isOpen, setIsOpen] = useState(false);
-  const [openDeleteModal, setOpenDeleteModal] = useState(false);
-  const [openEditModal, setOpenEditModal] = useState(false);
+const DashboardAllProducts = () => {
   const [page, setPage] = useState(1);
   const { data, isSuccess, isLoading } = useQuery({
     queryKey: ["mProducts", page],
@@ -33,26 +30,19 @@ const DashboardAllPrices = () => {
   return (
     <>
       <div className="flex justify-between rounded-lg bg-white p-2 shadow-sm">
+        <p className="pr-8 text-xl md:text-2xl">کالاها</p>
         <div>
-          <p className="pr-8 text-xl md:text-2xl">کالاها</p>
-        </div>
-        <div>
-          <Modal
-            isOpen={isOpen}
-            setIsOpen={setIsOpen}
-            text="افزودن کالا +"
-            triggerClass="bg-sky-500 rounded-lg px-3 py-2 text-sm text-white w-[900px] max-w-[900px]"
-          >
-            <AddProductModal setOpen={setIsOpen} />
-          </Modal>
+          <AddProductModal />
         </div>
       </div>
       <div className="mb-2 mt-8 rounded-lg bg-white p-2 shadow-sm">
-        <Table className="table-fixed border-collapse text-xs sm:text-sm md:text-base">
+        <Table className="table-auto border-collapse text-xs sm:text-sm md:table-fixed md:text-base">
           <TableHeader>
             <TableRow>
               <TableHead className="px-1 text-right">تصویر</TableHead>
-              <TableHead className="px-1 text-right">نام محصول</TableHead>
+              <TableHead colSpan={3} className="px-1 text-right">
+                نام محصول
+              </TableHead>
               <TableHead className="px-1 text-right">دسته بندی</TableHead>
               <TableHead className="px-1 text-center">عملیات</TableHead>
             </TableRow>
@@ -62,54 +52,35 @@ const DashboardAllPrices = () => {
               data.data.data &&
               data?.data?.data?.products?.map((item) => (
                 <TableRow key={item._id}>
-                  <TableCell>
+                  <TableCell className="p-2">
                     <Image
-                      src={process.env.PRODUCT_THUMB + item.thumbnail}
+                      src={apiRoutes.productThumb + item.thumbnail}
                       alt={item.brand}
-                      width={80}
-                      height={80}
-                      className="w-20 object-cover object-center"
+                      width={40}
+                      height={40}
+                      className="h-5 w-5 object-cover object-center sm:h-auto sm:w-auto"
                     />
                   </TableCell>
-                  <TableCell>
+                  <TableCell className="overflow-hidden p-2" colSpan={3}>
                     <Link
-                      className="line-clamp-2 text-xs hover:underline sm:text-base"
+                      className="line-clamp-2 text-xs hover:underline sm:text-sm"
                       href={`/product/${item._id}`}
                     >
                       {item.name}
                     </Link>
                   </TableCell>
-                  <TableCell className="overflow-hidden text-ellipsis text-xs sm:text-base">
+                  <TableCell className="w-max overflow-hidden p-2 text-xs sm:text-ellipsis sm:text-sm">
                     <GetCategory id={item.category} />
                   </TableCell>
-                  <TableCell className="gap-y-2 text-xs sm:flex sm:items-center sm:justify-center sm:gap-x-2 sm:gap-y-0 sm:text-sm md:text-base">
-                    <Modal
-                      isOpen={openEditModal}
-                      setIsOpen={setOpenEditModal}
-                      text="ویرایش"
-                    >
-                      <EditProductModal
-                        id={item._id}
-                        setOpen={setOpenEditModal}
-                      />
-                    </Modal>
-                    <Modal
-                      isOpen={openDeleteModal}
-                      setIsOpen={setOpenDeleteModal}
-                      text="حذف"
-                    >
-                      <DeleteModal
-                        id={item._id}
-                        name={item.name}
-                        setIsOpen={setOpenDeleteModal}
-                      />
-                    </Modal>
+                  <TableCell className="flex w-max flex-col gap-2 p-2 text-xs sm:flex-row sm:items-center sm:justify-center sm:text-sm md:text-sm">
+                    <EditProductModal id={item._id} />
+                    <DeleteModal id={item._id} name={item.name} />
                   </TableCell>
                 </TableRow>
               ))}
             {isLoading && (
               <TableRow>
-                <TableCell colSpan={4} className="px-1 text-right">
+                <TableCell colSpan={6} className="px-1 text-right">
                   <Spinner />
                 </TableCell>
               </TableRow>
@@ -117,11 +88,11 @@ const DashboardAllPrices = () => {
           </TableBody>
           <TableFooter>
             <TableRow>
-              <TableCell colSpan={4} className="px-1 text-left">
+              <TableCell colSpan={6} className="px-3 text-left">
                 {isSuccess && data?.data?.page && data?.data?.total_pages && (
                   <Pagination
                     page={page}
-                    total={data.data.total}
+                    total={data.data.total_pages}
                     setPage={setPage}
                   />
                 )}
@@ -134,4 +105,4 @@ const DashboardAllPrices = () => {
   );
 };
 
-export default DashboardAllPrices;
+export default DashboardAllProducts;
