@@ -10,11 +10,11 @@ const getAllCategory = async () => {
       apiRoutes.categories,
       {
         headers: {
-          Authorization: `Bearer ${Cookies.get("accessToken")}`,
+          Authorization: `Bearer ${Cookies.get("access_token")}`,
         },
       },
     );
-    return response.data;
+    return response;
   } catch (error) {
     throw error as AxiosError;
   }
