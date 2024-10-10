@@ -8,13 +8,7 @@ import SearchBar from "./components/searchBar";
 import { ICategory } from "@/types/api/category";
 import { IAllSubCategoryRes } from "@/types/api/subcategory";
 
-const Header = ({
-  categories,
-  subcategories,
-}: {
-  categories: ICategory;
-  subcategories: IAllSubCategoryRes;
-}) => {
+const Header = () => {
   return (
     <div>
       <div className="rounded-b-3xl bg-gradient-to-l from-[#F5F9FF] to-[#FFF5F7] py-[10px] shadow-[0_4px_8px_rgba(0,0,0,0.03)] dark:from-dark-topOfHeader dark:to-dark-topOfHeader dark:text-dark-textColor">
@@ -91,11 +85,7 @@ const Header = ({
         <nav className="hidden lg:block">
           <ul className="flex items-center gap-x-6 text-sm text-textcolor-25 dark:text-dark-descriptionAndDeact">
             <li className="hover:text-textcolor-100 dark:hover:text-dark-textColor">
-              <Dropdown
-                text="محصولات ما"
-                categories={categories}
-                subcategories={subcategories}
-              ></Dropdown>
+              <Dropdown text="محصولات ما"></Dropdown>
             </li>
             <li className="hover:text-textcolor-100 dark:hover:text-dark-textColor">
               کیس اسمبل شده

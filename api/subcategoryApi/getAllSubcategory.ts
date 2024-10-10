@@ -8,7 +8,7 @@ const getAllSubcategory = async () => {
     const response: AxiosResponse<IAllSubCategoryRes> = await axiosInstance.get(
       `${apiRoutes.subcategories}?limit=1000`,
     );
-    return response.data;
+    return response;
   } catch (error) {
     throw error as AxiosError;
   }
