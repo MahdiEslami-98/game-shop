@@ -3,15 +3,25 @@ import React, { ReactNode, useContext } from "react";
 import Header from "./header";
 import Footer from "./footer";
 import { ThemeContext } from "@/context/themeContext";
+import { ICategory } from "@/types/api/category";
+import { IAllSubCategoryRes } from "@/types/api/subcategory";
 
-const MainLayout = ({ children }: { children: ReactNode }) => {
+const MainLayout = ({
+  children,
+  categories,
+  subcategories,
+}: {
+  children: ReactNode;
+  categories: ICategory;
+  subcategories: IAllSubCategoryRes;
+}) => {
   const { theme } = useContext(ThemeContext);
   return (
     <div
       className={`${theme === "dark" ? "dark" : ""} bg-gradient-to-b from-[#FFF5F7] to-[#F5F9FF] text-textcolor-100 dark:from-dark-bodyColor dark:to-dark-bodyColor dark:text-dark-textColor`}
     >
       <div className="">
-        <Header />
+        <Header categories={categories} subcategories={subcategories} />
         <main className="container mx-auto px-4 pb-16 pt-5 lg:pb-32 lg:pt-9">
           {children}
         </main>

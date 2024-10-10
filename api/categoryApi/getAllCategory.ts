@@ -14,7 +14,7 @@ const getAllCategory = async () => {
         },
       },
     );
-    return response;
+    return response.data;
   } catch (error) {
     throw error as AxiosError;
   }
