@@ -4,7 +4,7 @@ import { ThemeContext } from "@/context/themeContext";
 import Image from "next/image";
 import { useContext } from "react";
 
-const ThemeBtn = ({className}: {className?: string}) => {
+const ThemeBtn = ({ className }: { className?: string }) => {
   const { theme, setTheme } = useContext(ThemeContext);
 
   const toggleTheme = () => {
@@ -13,7 +13,7 @@ const ThemeBtn = ({className}: {className?: string}) => {
   return (
     <Button
       onClick={toggleTheme}
-      className={`dark:text-dark-textColor dark:border-dark-textColor overflow-hidden rounded-full border border-black p-2 text-black ${className}`}
+      className={`overflow-hidden rounded-full border border-black p-2 text-black dark:border-dark-textColor dark:text-dark-textColor ${className} opacity-70 transition-all duration-200 hover:scale-110 hover:opacity-100 dark:opacity-100 dark:hover:opacity-60`}
     >
       <Image
         className="text-textcolor-100 dark:invert"
