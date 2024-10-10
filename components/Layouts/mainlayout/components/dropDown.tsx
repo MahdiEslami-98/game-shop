@@ -2,26 +2,35 @@
 import { useState, useRef, useEffect } from "react";
 import { ChevronDown, ChevronLeft } from "lucide-react";
 import Image from "next/image";
-import { ICategory } from "@/types/api/category";
-import { IAllSubCategoryRes, ISubcategory } from "@/types/api/subcategory";
+import { ICategoryEntity } from "@/types/api/category";
+import { ISubcategory } from "@/types/api/subcategory";
 import Link from "next/link";
+import getAllCategory from "@/api/categoryApi/getAllCategory";
+import getAllSubcategory from "@/api/subcategoryApi/getAllSubcategory";
 
-const DropdownMenu = ({
-  text,
-  categories,
-  subcategories,
-}: {
-  text: string;
-  categories: ICategory;
-  subcategories: IAllSubCategoryRes;
-}) => {
+const DropdownMenu = ({ text }: { text: string }) => {
   const [isOpen, setIsOpen] = useState(false);
+  const [cats, setCats] = useState<ICategoryEntity[]>();
+  const [subs, setSubs] = useState<ISubcategory[]>();
   const [selectedCategory, setSelectedCategory] = useState("");
-  const [subs, setSubs] = useState<ISubcategory[]>([]);
+  const [selectedSubcategory, setSelectedSubcategory] =
+    useState<ISubcategory[]>();
   const dropdownRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    setSelectedCategory(categories.data.categories[0]._id);
+    const fethcData = async () => {
+      const categories = await getAllCategory();
+      setCats(categories.data.data.categories);
+      const subcategories = await getAllSubcategory();
+      setSubs(subcategories.data.data.subcategories);
+      setSelectedCategory(categories.data.data.categories[0]._id);
+      setSelectedSubcategory(
+        subcategories.data.data.subcategories.filter(
+          (sub) => sub.category === categories.data.data.categories[0]._id,
+        ),
+      );
+    };
+    fethcData();
   }, []);
 
   useEffect(() => {
@@ -41,11 +50,8 @@ const DropdownMenu = ({
   }, []);
 
   useEffect(() => {
-    const mainSubs = subcategories.data.subcategories.filter(
-      (sub) => sub._id === selectedCategory,
-    );
-
-    setSubs(mainSubs);
+    const main = subs?.filter((sub) => sub.category === selectedCategory);
+    setSelectedSubcategory(main);
   }, [selectedCategory]);
 
   return (
@@ -69,22 +75,25 @@ const DropdownMenu = ({
                 height={150}
                 className="absolute bottom-0 right-28 translate-x-1/2"
               />
-              {categories.data.categories.map((category) => (
-                <button
-                  key={category.name}
-                  className={`block w-full px-4 py-2 text-left text-sm hover:bg-gray-100/10 ${
-                    selectedCategory === category._id ? "bg-gray-100/20" : ""
-                  }`}
-                  onClick={() => setSelectedCategory(category._id)}
-                >
-                  <div className="flex items-center justify-between">
-                    {category.name}
-                    <ChevronLeft />
-                  </div>
-                </button>
-              ))}
+              {cats &&
+                cats.map((category) => (
+                  <button
+                    key={category.name}
+                    className={`block w-full px-4 py-2 text-left text-sm hover:bg-gray-100 dark:hover:bg-gray-100/10 ${
+                      selectedCategory === category._id
+                        ? "bg-gray-200 dark:bg-gray-100/10"
+                        : ""
+                    }`}
+                    onClick={() => setSelectedCategory(category._id)}
+                  >
+                    <div className="flex items-center justify-between">
+                      {category.name}
+                      <ChevronLeft />
+                    </div>
+                  </button>
+                ))}
             </div>
-            <div className="relative w-2/3 pr-4 pt-4">
+            <div className="relative w-2/3 border-r pr-4 pt-4">
               <Image
                 src={"/Group 3728.png"}
                 alt="image"
@@ -92,17 +101,18 @@ const DropdownMenu = ({
                 height={250}
                 className="absolute -bottom-[30px] -left-[22px]"
               />
-              <ul>
-                {subs.map((subcategory) => (
-                  <li key={subcategory._id} className="py-1">
-                    <Link
-                      href="#"
-                      className="text-sm text-gray-700 hover:text-dark-textColor/60 hover:text-gray-900 dark:text-dark-textColor"
-                    >
-                      {subcategory.name}
-                    </Link>
-                  </li>
-                ))}
+              <ul className="list-inside list-disc">
+                {selectedSubcategory &&
+                  selectedSubcategory.map((subcategory) => (
+                    <li key={subcategory._id} className="py-1">
+                      <Link
+                        href="#"
+                        className="text-sm text-gray-700 hover:text-dark-textColor/60 hover:text-gray-900 dark:text-dark-textColor"
+                      >
+                        {subcategory.name}
+                      </Link>
+                    </li>
+                  ))}
               </ul>
             </div>
           </div>
