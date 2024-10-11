@@ -2,11 +2,9 @@ import Button from "@/components/Button";
 import Image from "next/image";
 import ThemeBtn from "./components/themeBtn";
 import Link from "next/link";
-import Input from "@/components/Input";
 import Dropdown from "./components/dropDown";
 import SearchBar from "./components/searchBar";
-import { ICategory } from "@/types/api/category";
-import { IAllSubCategoryRes } from "@/types/api/subcategory";
+import CartBtn from "./components/cartBtn";
 
 const Header = () => {
   return (
@@ -101,15 +99,7 @@ const Header = () => {
         <div className="flex items-center gap-x-4">
           <ThemeBtn className={"hidden lg:inline"} />
           <span className="hidden h-4 w-px border border-description-100 lg:inline"></span>
-          <Button className="rounded-full border border-black p-2 opacity-70 transition-all duration-200 hover:scale-110 hover:opacity-100 dark:border-dark-textColor dark:opacity-100 dark:hover:opacity-60">
-            <Image
-              className="dark:invert"
-              width={17}
-              height={17}
-              alt=""
-              src={`/icons/shopping-bag 1.svg`}
-            />
-          </Button>
+          <CartBtn />
           <Link
             href={"/login"}
             className="rounded-full border border-black p-2 opacity-70 transition-all duration-200 hover:scale-110 hover:opacity-100 dark:border-dark-textColor dark:opacity-100 dark:hover:opacity-60"

@@ -14,6 +14,7 @@ interface ICartStore {
     decrementQuantity: (id: string) => void;
     removeFromCart: (id: string) => void;
     clearCart: () => void;
+    sumMoneyCart: () => number;
   };
 }
 
@@ -87,6 +88,14 @@ const useCartStore = create(
         },
 
         clearCart: () => set({ cart: [] }),
+
+        sumMoneyCart: () => {
+          const sum = get().cart.reduce(
+            (acc, cur) => cur.price * cur.cartQuantity + acc,
+            0,
+          );
+          return sum;
+        },
       },
     }),
     {
