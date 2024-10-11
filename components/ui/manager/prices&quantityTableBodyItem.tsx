@@ -144,7 +144,7 @@ const PricesAndquantityTableBodyItem = ({
   return (
     <TableRow key={tableItem._id}>
       <TableCell colSpan={4}>
-        <Link href={`/product/${tableItem._id}`} className="hover:underline">
+        <Link href={`/products/${tableItem._id}`} className="hover:underline">
           {tableItem.name}
         </Link>
       </TableCell>

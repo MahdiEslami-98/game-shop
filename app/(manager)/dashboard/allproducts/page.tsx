@@ -64,7 +64,7 @@ const DashboardAllProducts = () => {
                   <TableCell className="overflow-hidden p-2" colSpan={3}>
                     <Link
                       className="line-clamp-2 text-xs hover:underline sm:text-sm"
-                      href={`/product/${item._id}`}
+                      href={`/products/${item._id}`}
                     >
                       {item.name}
                     </Link>
