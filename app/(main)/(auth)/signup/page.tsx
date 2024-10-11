@@ -344,7 +344,7 @@ const SignupPage = () => {
       </div>
       <div className="relative pb-6 lg:pb-0">
         <Image
-          src={"/Group 586 1.png"}
+          src={"/Group 586 1.svg"}
           alt=""
           width={500}
           height={500}
