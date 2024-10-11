@@ -69,7 +69,7 @@ const DropdownMenu = ({ text }: { text: string }) => {
           <div className="flex h-[400px] w-[60vw] max-w-5xl">
             <div className="relative w-1/3 border-r border-gray-200 pt-6">
               <Image
-                src={"/VR-Metaverse (8) 1.png"}
+                src={"/Group 3729.svg"}
                 alt="image"
                 width={150}
                 height={150}
@@ -95,7 +95,7 @@ const DropdownMenu = ({ text }: { text: string }) => {
             </div>
             <div className="relative w-2/3 border-r pr-4 pt-4">
               <Image
-                src={"/Group 3728.png"}
+                src={"/Group 3728.svg"}
                 alt="image"
                 width={250}
                 height={250}
@@ -106,7 +106,7 @@ const DropdownMenu = ({ text }: { text: string }) => {
                   selectedSubcategory.map((subcategory) => (
                     <li key={subcategory._id} className="py-1">
                       <Link
-                        href={`/products-category?category=${selectedCategory}&subcategory=${subcategory._id}&page=1`}
+                        href={`/products?category=${selectedCategory}&subcategory=${subcategory._id}&page=1`}
                         className="text-sm text-gray-700 hover:text-dark-textColor/60 hover:text-gray-900 dark:text-dark-textColor"
                       >
                         {subcategory.name}

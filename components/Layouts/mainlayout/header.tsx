@@ -4,6 +4,10 @@ import ThemeBtn from "./components/themeBtn";
 import Link from "next/link";
 import Dropdown from "./components/dropDown";
 import SearchBar from "./components/searchBar";
+
+const topOfHeader = ["خرید اقساطی", "فروش سازمانی", "مجله گیمشاپ", "درباره ما"];
+
+const navItems = ["کیس اسمبل شده", "اسمبل آنلاین", "گیمینگ"];
 import CartBtn from "./components/cartBtn";
 
 const Header = () => {
@@ -16,38 +20,16 @@ const Header = () => {
             <span className="text-secondary-100">Shop</span>
           </Link>
           <ul className="hidden items-center gap-x-6 text-sm text-textcolor-25 lg:flex dark:text-dark-descriptionAndDeact">
-            <li>
-              <a
-                href="#"
-                className="hover:text-textcolor-75 dark:hover:text-dark-textColor"
-              >
-                خرید اقساطی
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                className="hover:text-textcolor-75 dark:hover:text-dark-textColor"
-              >
-                فروش سازمانی
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                className="hover:text-textcolor-75 dark:hover:text-dark-textColor"
-              >
-                مجله گیمشاپ
-              </a>
-            </li>
-            <li>
-              <a
-                href="#"
-                className="hover:text-textcolor-75 dark:hover:text-dark-textColor"
-              >
-                درباره ما
-              </a>
-            </li>
+            {topOfHeader.map((item, index) => (
+              <li key={index}>
+                <Link
+                  href="#"
+                  className="hover:text-textcolor-75 dark:hover:text-dark-textColor"
+                >
+                  {item}
+                </Link>
+              </li>
+            ))}
           </ul>
           <ThemeBtn className="lg:hidden" />
           <div className="hidden cursor-pointer items-center gap-x-1 lg:flex">
@@ -85,15 +67,16 @@ const Header = () => {
             <li className="hover:text-textcolor-100 dark:hover:text-dark-textColor">
               <Dropdown text="محصولات ما"></Dropdown>
             </li>
-            <li className="hover:text-textcolor-100 dark:hover:text-dark-textColor">
-              کیس اسمبل شده
-            </li>
-            <li className="hover:text-textcolor-100 dark:hover:text-dark-textColor">
-              اسمبل آنلاین
-            </li>
-            <li className="hover:text-textcolor-100 dark:hover:text-dark-textColor">
-              گیمینگ
-            </li>
+            {navItems.map((item, index) => (
+              <li key={index}>
+                <Link
+                  href="#"
+                  className="hover:text-textcolor-100 dark:hover:text-dark-textColor"
+                >
+                  {item}
+                </Link>
+              </li>
+            ))}
           </ul>
         </nav>
         <div className="flex items-center gap-x-4">
