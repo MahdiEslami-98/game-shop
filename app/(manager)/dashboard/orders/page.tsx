@@ -21,7 +21,6 @@ import { useState } from "react";
 const OrdersPage = () => {
   const [stat, setStat] = useState("");
   const [page, setPage] = useState(1);
-  const [isOpen, setIsOpen] = useState(false);
   const { data, isLoading, isSuccess } = useQuery({
     queryKey: ["orders", stat, page],
     queryFn: () => getAllOrder(stat, page),
@@ -80,8 +79,7 @@ const OrdersPage = () => {
                     {item.deliveryStatus ? "تحویل شده" : "در انتظار"}
                   </TableCell>
                   <TableCell className="px-1 text-center">
-                    
-                      <OrderModal id={item._id} />
+                    <OrderModal id={item._id} />
                   </TableCell>
                 </TableRow>
               ))}
