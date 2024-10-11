@@ -106,7 +106,7 @@ const DropdownMenu = ({ text }: { text: string }) => {
                   selectedSubcategory.map((subcategory) => (
                     <li key={subcategory._id} className="py-1">
                       <Link
-                        href={`/products-category?category=${selectedCategory}&subcategory=${subcategory._id}&page=1`}
+                        href={`/products?category=${selectedCategory}&subcategory=${subcategory._id}&page=1`}
                         className="text-sm text-gray-700 hover:text-dark-textColor/60 hover:text-gray-900 dark:text-dark-textColor"
                       >
                         {subcategory.name}
