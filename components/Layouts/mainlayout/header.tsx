@@ -4,11 +4,11 @@ import ThemeBtn from "./components/themeBtn";
 import Link from "next/link";
 import Dropdown from "./components/dropDown";
 import SearchBar from "./components/searchBar";
+import CartBtn from "./components/cartBtn";
 
 const topOfHeader = ["خرید اقساطی", "فروش سازمانی", "مجله گیمشاپ", "درباره ما"];
 
 const navItems = ["کیس اسمبل شده", "اسمبل آنلاین", "گیمینگ"];
-import CartBtn from "./components/cartBtn";
 
 const Header = () => {
   return (
