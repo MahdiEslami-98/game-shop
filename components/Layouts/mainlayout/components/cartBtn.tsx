@@ -110,7 +110,7 @@ const CartBtn = () => {
         )}
         <div className="flex items-center justify-between px-2 py-3 text-alarm-100">
           <p>قیمت نهایی</p>
-          <p>{sumMoneyCart() || 0}</p>
+          <p>{cart.length > 0 ? sumMoneyCart() : "0"}</p>
         </div>
         <Link href={"/cart"}>
           <Button className="w-full rounded-lg bg-[#27EE8E] py-[6px] shadow-[3px_4px_0_0_#15121D]">

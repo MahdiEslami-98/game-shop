@@ -1,4 +1,4 @@
-import { IProduct } from "@/types/api/product";
+import { IProduct, ProductsEntity } from "@/types/api/product";
 import { create } from "zustand";
 import { persist } from "zustand/middleware";
 

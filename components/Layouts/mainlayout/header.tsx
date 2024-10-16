@@ -12,7 +12,7 @@ const navItems = ["کیس اسمبل شده", "اسمبل آنلاین", "گیم
 
 const Header = () => {
   return (
-    <div>
+    <header>
       <div className="rounded-b-3xl bg-gradient-to-l from-[#F5F9FF] to-[#FFF5F7] py-[10px] shadow-[0_4px_8px_rgba(0,0,0,0.03)] dark:from-dark-topOfHeader dark:to-dark-topOfHeader dark:text-dark-textColor">
         <div className="container mx-auto flex items-center justify-between px-4">
           <Link href="/" className="text-3xl font-bold lg:hidden">
@@ -98,7 +98,7 @@ const Header = () => {
         </div>
       </div>
       <SearchBar />
-    </div>
+    </header>
   );
 };
 export default Header;

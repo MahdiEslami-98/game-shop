@@ -5,7 +5,7 @@ import Link from "next/link";
 const sidebarItems = [
   { icon: Home, label: "داشبورد", href: "/dashboard" },
   { icon: ShoppingBag, label: "سفارش‌ها", href: "/dashboard/orders" },
-  { icon: Package, label: "محصولات", href: "/dashboard/allProducts" },
+  { icon: Package, label: "محصولات", href: "/dashboard/allproducts" },
   {
     icon: DollarSign,
     label: "قیمت و تعداد",
