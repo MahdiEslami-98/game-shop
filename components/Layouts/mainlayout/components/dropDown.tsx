@@ -92,6 +92,12 @@ const DropdownMenu = ({ text }: { text: string }) => {
                     </div>
                   </button>
                 ))}
+              <Link
+                className="block w-full px-4 py-2"
+                href={`/products?page=1`}
+              >
+                همه محصولات
+              </Link>
             </div>
             <div className="relative w-2/3 border-r pr-4 pt-4">
               <Image
