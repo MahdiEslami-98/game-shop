@@ -136,20 +136,20 @@ body {
 }
 
 .edit-scroll {
-  ::-webkit-scrollbar {
+  &::-webkit-scrollbar {
     width: 6px;
   }
 
-  ::-webkit-scrollbar-thumb {
+  &::-webkit-scrollbar-thumb {
     background: #aaa;
     border-radius: 8px;
   }
 
-  ::-webkit-scrollbar-thumb:hover {
+  &::-webkit-scrollbar-thumb:hover {
     background: #777;
   }
 
-  ::-webkit-scrollbar-track {
+  &::-webkit-scrollbar-track {
     background: #f9f9f9;
   }
 }
