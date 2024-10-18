@@ -108,8 +108,8 @@ const ProductsAndCategoryPage = () => {
           </select>
         </div>
       </div>
-      <div className="grid grid-cols-2 gap-6 pt-6 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5">
-        <div className="relative">
+      <div className="grid grid-cols-1 gap-6 pt-6 lg:grid-cols-4 xl:grid-cols-5">
+        <div className="relative hidden lg:block">
           <div className="sticky top-8">
             <div className="relative rounded-3xl border bg-white px-4 pb-4 pt-11 dark:bg-dark-boxColor">
               <div className="absolute left-1/2 top-0 -translate-x-1/2 rounded-b-3xl bg-secondary-100 px-11 py-1 text-white">
@@ -170,7 +170,7 @@ const ProductsAndCategoryPage = () => {
             </div>
           </div>
         </div>
-        <div className="col-span-1 md:col-span-2 lg:col-span-3 xl:col-span-4">
+        <div className="col-span-1 lg:col-span-3 xl:col-span-4">
           <Suspense
             fallback={
               <div className="flex items-center justify-center bg-white">
