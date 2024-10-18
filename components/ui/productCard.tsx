@@ -8,14 +8,11 @@ import numberTo3Digit from "@/util/numberTo3Digit";
 import { ProductsEntity } from "@/types/api/product";
 import { useCart, useCartActions } from "@/store/cart-store";
 
-
 const ProductCard = ({ product }: { product: ProductsEntity }) => {
-    const cart = useCart();
+  const cart = useCart();
   const { addToCart, removeFromCart } = useCartActions();
   return (
-    <div
-      className="group relative block h-[326px] w-[200px] rounded-3xl border-2 border-white bg-white p-4 hover:border-secondary-100 dark:border-dark-boxColor dark:bg-dark-boxColor"
-    >
+    <div className="group relative block h-[326px] w-[150px] rounded-3xl border-2 border-white bg-white p-4 transition-all duration-300 hover:scale-105 hover:border-secondary-100 hover:shadow-[0_0_10px_0_rgba(0,0,0,0.1)] sm:w-[200px] dark:border-dark-boxColor dark:bg-dark-boxColor">
       <Link href={`/products/${product._id}`}>
         <div className="mb-3 overflow-hidden rounded-2xl bg-gray-300">
           <Image
@@ -27,7 +24,7 @@ const ProductCard = ({ product }: { product: ProductsEntity }) => {
           />
         </div>
         <p className="mb-5 line-clamp-2 h-11">{product.name}</p>
-        <div className="flex items-center justify-between">
+        <div className="flex flex-col-reverse items-end sm:flex-row sm:items-center sm:justify-between">
           <span className="flex gap-x-1">
             <Star className="h-5 w-5 text-[#FFC700]" />
             3.5

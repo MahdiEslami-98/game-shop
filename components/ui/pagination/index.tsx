@@ -6,10 +6,16 @@ const Pagination = ({
   page,
   total,
   setPage,
+  btnClass,
+  activeClass,
+  PNClass,
 }: {
   page: number;
   total: number;
   setPage: (value: number) => void;
+  btnClass?: string;
+  activeClass?: string;
+  PNClass?: string;
 }) => {
   const btns: JSX.Element[] = [];
 
@@ -21,12 +27,21 @@ const Pagination = ({
           setPage={setPage}
           index={i}
           key={i}
+          className={btnClass}
+          activeClass={activeClass}
         />,
       );
     }
   } else if (total >= 6) {
     btns.push(
-      <PaginationBtn currentPage={page} setPage={setPage} index={1} key={1} />,
+      <PaginationBtn
+        currentPage={page}
+        setPage={setPage}
+        index={1}
+        key={1}
+        className={btnClass}
+        activeClass={activeClass}
+      />,
     );
     if (page > 3) {
       btns.push(<Dots key={"a"} />);
@@ -38,6 +53,8 @@ const Pagination = ({
           setPage={setPage}
           index={page - 2}
           key={2}
+          className={btnClass}
+          activeClass={activeClass}
         />,
       );
     }
@@ -48,6 +65,8 @@ const Pagination = ({
           setPage={setPage}
           index={page - 1}
           key={3}
+          className={btnClass}
+          activeClass={activeClass}
         />,
       );
     }
@@ -58,6 +77,8 @@ const Pagination = ({
           setPage={setPage}
           index={page}
           key={4}
+          className={btnClass}
+          activeClass={activeClass}
         />,
       );
     }
@@ -68,6 +89,8 @@ const Pagination = ({
           setPage={setPage}
           index={page + 1}
           key={5}
+          className={btnClass}
+          activeClass={activeClass}
         />,
       );
     }
@@ -78,6 +101,8 @@ const Pagination = ({
           setPage={setPage}
           index={page + 2}
           key={6}
+          className={btnClass}
+          activeClass={activeClass}
         />,
       );
     }
@@ -90,6 +115,8 @@ const Pagination = ({
         setPage={setPage}
         index={total}
         key={7}
+        className={btnClass}
+        activeClass={activeClass}
       />,
     );
   }
@@ -107,14 +134,14 @@ const Pagination = ({
   return (
     <div className="-my-1 flex flex-row-reverse items-center justify-start gap-x-2 text-xs sm:text-sm">
       <Button
-        className="rounded-lg border border-black px-2 py-1 hover:bg-gray-300 active:bg-black/80 active:text-white"
+        className={`rounded-lg border border-black px-2 py-1 hover:bg-gray-300 active:bg-black/80 active:text-white ${PNClass}`}
         onClick={pervPageHandler}
       >
         قبلی
       </Button>
       {btns}
       <Button
-        className="rounded-lg border border-black px-2 py-1 hover:bg-gray-300 active:bg-black/80 active:text-white"
+        className={`rounded-lg border border-black px-2 py-1 hover:bg-gray-300 active:bg-black/80 active:text-white ${PNClass}`}
         onClick={nextPageHandler}
       >
         بعدی

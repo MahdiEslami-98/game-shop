@@ -5,6 +5,7 @@ import { useQuery } from "@tanstack/react-query";
 import getAllProducts from "@/api/productApi/getAllProducts";
 import ProductCard from "./productCard";
 import Spinner from "./spinner";
+import Pagination from "./pagination";
 
 const Products = ({ sort }: { sort: string }) => {
   const [page, setPage] = useState(1);
@@ -26,7 +27,7 @@ const Products = ({ sort }: { sort: string }) => {
 
   return (
     <>
-      <div className="flex flex-wrap gap-4">
+      <div className="flex flex-wrap justify-center gap-4 sm:justify-stretch">
         {isSuccess &&
           data.data.data.products &&
           data?.data?.data?.products.map((product) => (
@@ -38,7 +39,16 @@ const Products = ({ sort }: { sort: string }) => {
           </div>
         )}
       </div>
-      <div></div>
+      <div className="-mb-12 flex justify-center pt-12">
+        <Pagination
+          page={page}
+          setPage={setPage}
+          total={data?.data?.total_pages ?? 1}
+          btnClass={"dark:bg-dark-boxColor dark:text-white"}
+          activeClass={"bg-secondary-100 text-white dark:bg-secondary-100"}
+          PNClass={"dark:bg-dark-boxColor dark:text-white"}
+        />
+      </div>
     </>
   );
 };
