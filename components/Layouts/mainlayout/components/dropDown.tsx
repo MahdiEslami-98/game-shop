@@ -7,9 +7,13 @@ import { ISubcategory } from "@/types/api/subcategory";
 import Link from "next/link";
 import getAllCategory from "@/api/categoryApi/getAllCategory";
 import getAllSubcategory from "@/api/subcategoryApi/getAllSubcategory";
-import { usePathname } from "next/navigation";
+import { usePathname, useSearchParams } from "next/navigation";
 
 const DropdownMenu = ({ text }: { text: string }) => {
+  const params = useSearchParams();
+  const c = params.get("category");
+  const s = params.get("subcategory");
+  const p = params.get("page");
   const [isOpen, setIsOpen] = useState(false);
   const [cats, setCats] = useState<ICategoryEntity[]>();
   const [subs, setSubs] = useState<ISubcategory[]>();
@@ -17,7 +21,6 @@ const DropdownMenu = ({ text }: { text: string }) => {
   const [selectedSubcategory, setSelectedSubcategory] =
     useState<ISubcategory[]>();
   const dropdownRef = useRef<HTMLDivElement>(null);
-  const pathName = usePathname();
 
   useEffect(() => {
     const fethcData = async () => {
@@ -58,7 +61,7 @@ const DropdownMenu = ({ text }: { text: string }) => {
 
   useEffect(() => {
     setIsOpen(false);
-  }, [pathName]);
+  }, [c, s, p]);
 
   return (
     <div className="relative" ref={dropdownRef}>

@@ -5,6 +5,8 @@ import Link from "next/link";
 import Dropdown from "./components/dropDown";
 import SearchBar from "./components/searchBar";
 import CartBtn from "./components/cartBtn";
+import { Suspense } from "react";
+import Spinner from "@/components/ui/spinner";
 
 const topOfHeader = ["خرید اقساطی", "فروش سازمانی", "مجله گیمشاپ", "درباره ما"];
 
@@ -65,7 +67,15 @@ const Header = () => {
         <nav className="hidden lg:block">
           <ul className="flex items-center gap-x-6 text-sm text-textcolor-25 dark:text-dark-descriptionAndDeact">
             <li className="hover:text-textcolor-100 dark:hover:text-dark-textColor">
-              <Dropdown text="محصولات ما"></Dropdown>
+              <Suspense
+                fallback={
+                  <div className="mt-12 w-full">
+                    <Spinner />
+                  </div>
+                }
+              >
+                <Dropdown text="محصولات ما"></Dropdown>
+              </Suspense>
             </li>
             {navItems.map((item, index) => (
               <li key={index}>
