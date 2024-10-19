@@ -123,7 +123,7 @@ const SignupPage = () => {
     <>
       <div className="w-full lg:w-1/2">
         <h2 className="flex flex-wrap items-center justify-center gap-x-2 pb-8 text-2xl font-bold text-textcolor-100 dark:text-dark-textColor">
-          ایجا میتونی به<span className="text-primary-100">خانواده</span>
+          اینجا میتونی به<span className="text-primary-100">خانواده</span>
           ما بپیوندی !
         </h2>
         <form
