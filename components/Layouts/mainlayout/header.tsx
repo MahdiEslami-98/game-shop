@@ -4,13 +4,19 @@ import ThemeBtn from "./components/themeBtn";
 import Link from "next/link";
 import Dropdown from "./components/dropDown";
 import SearchBar from "./components/searchBar";
+import SideBarMenu from "./components/sideBarMenu";
 import CartBtn from "./components/cartBtn";
 import { Suspense } from "react";
 import Spinner from "@/components/ui/spinner";
 
-const topOfHeader = ["خرید اقساطی", "فروش سازمانی", "مجله گیمشاپ", "درباره ما"];
+export const navItems = ["کیس اسمبل شده", "اسمبل آنلاین", "گیمینگ"];
 
-const navItems = ["کیس اسمبل شده", "اسمبل آنلاین", "گیمینگ"];
+export const topOfHeader = [
+  "خرید اقساطی",
+  "فروش سازمانی",
+  "مجله گیمشاپ",
+  "درباره ما",
+];
 
 const Header = () => {
   return (
@@ -55,15 +61,7 @@ const Header = () => {
             <span className="text-secondary-100">Shop</span>
           </Link>
         </>
-        <Button className="rounded-full border border-black p-2 lg:hidden dark:border-dark-textColor">
-          <Image
-            className="dark:invert"
-            alt="menu"
-            src={"/icons/dashicons_menu-alt.svg"}
-            width={20}
-            height={20}
-          />
-        </Button>
+        <SideBarMenu />
         <nav className="hidden lg:block">
           <ul className="flex items-center gap-x-6 text-sm text-textcolor-25 dark:text-dark-descriptionAndDeact">
             <li className="hover:text-textcolor-100 dark:hover:text-dark-textColor">

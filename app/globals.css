@@ -134,6 +134,11 @@
       background: #f9f9f9;
     }
   }
+  .blur-filter {
+    background: rgba(255, 255, 255, 0.5);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+  }
 }
 
 @layer base {
