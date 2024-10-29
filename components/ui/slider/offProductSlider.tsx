@@ -1,6 +1,6 @@
 "use client";
 import Image from "next/image";
-import { useCallback, useState } from "react";
+import { useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import type { Swiper as SwiperType } from "swiper";
 import "swiper/css";

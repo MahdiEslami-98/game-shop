@@ -11,6 +11,7 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import type { Swiper as SwiperType } from "swiper";
 import apiRoutes from "@/api/apiRoutes";
 import { useCart, useCartActions } from "@/store/cart-store";
+import "swiper/css";
 
 const CategorySlider = ({
   data,

@@ -4,6 +4,7 @@ import { useEffect, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import type { Swiper as SwiperType } from "swiper";
 import { Clock, Heart, MessageSquareText } from "lucide-react";
+import "swiper/css";
 
 const ArticleSlider = () => {
   const [activeIndex, setActiveIndex] = useState(0);

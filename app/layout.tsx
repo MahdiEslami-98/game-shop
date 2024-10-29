@@ -16,7 +16,7 @@ export default function RootLayout({
   children: ReactNode;
 }>) {
   return (
-    <html lang="en" className="h-full">
+    <html lang="en" className="h-full scroll-smooth">
       <body className={`h-full font-iransans`}>
         <QueryProvider>
           <ThemeContextProvider>{children}</ThemeContextProvider>

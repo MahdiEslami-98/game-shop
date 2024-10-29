@@ -19,6 +19,9 @@ const config: Config = {
           "100%": { opacity: "1" },
         },
       },
+      transitionDuration: {
+        "400": "400ms",
+      },
       fontFamily: { iransans: ["IRANSans", ...defaultTheme.fontFamily.sans] },
       colors: {
         primary: {
