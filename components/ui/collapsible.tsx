@@ -32,7 +32,7 @@ const Collapsible = ({
       >
         {trigger}
         <ChevronLeft
-          className={`${isOpen ? "-rotate-90" : "rotate-0"} transition-transform duration-300`}
+          className={`${isOpen ? "-rotate-90" : "rotate-0"} font-normal transition-transform duration-300`}
         />
       </Button>
       <div

@@ -5,9 +5,16 @@ import { useState } from "react";
 import { navItems, topOfHeader } from "../header";
 import Link from "next/link";
 import { X } from "lucide-react";
+import Collapsible from "@/components/ui/collapsible";
+import { useQuery } from "@tanstack/react-query";
+import getAllSubcategory from "@/api/subcategoryApi/getAllSubcategory";
 
 const SideBarMenu = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const { data, isSuccess } = useQuery({
+    queryKey: ["subcategories"],
+    queryFn: () => getAllSubcategory(),
+  });
   return (
     <>
       <Button
@@ -35,20 +42,41 @@ const SideBarMenu = () => {
         >
           <X />
         </Button>
-        <Link className="pr-8 text-3xl font-bold" href={"/"}>
+        <Link className="pr-4 text-3xl font-bold" href={"/"}>
           <span className="text-primary-100">Game</span>{" "}
           <span className="text-secondary-100">Shop</span>
         </Link>
         <ul className="flex flex-col pt-6">
-          <li></li>
+          <li>
+            <Collapsible
+              triggerClass="text-base font-normal border-b py-3"
+              trigger="محصولات"
+              containerClass="flex flex-col gap-y-2 bg-description-25/10 px-4"
+            >
+              {isSuccess &&
+                data.data.data.subcategories.map((item) => (
+                  <Link
+                    onClick={() => setIsOpen(false)}
+                    href={`/products?category=${item.category}&subcategory=${item._id}&page=1`}
+                    key={item._id}
+                  >
+                    {item.name}
+                  </Link>
+                ))}
+            </Collapsible>
+          </li>
           {navItems.map((item, i) => (
             <li key={i} className="border-b py-3 last:border-none">
-              <Link href={"#"}>{item}</Link>
+              <Link href={"#"} onClick={() => setIsOpen(false)}>
+                {item}
+              </Link>
             </li>
           ))}
           {topOfHeader.map((item, i) => (
             <li key={i} className="border-b py-3 last:border-none">
-              <Link href={"#"}>{item}</Link>
+              <Link href={"#"} onClick={() => setIsOpen(false)}>
+                {item}
+              </Link>
             </li>
           ))}
         </ul>

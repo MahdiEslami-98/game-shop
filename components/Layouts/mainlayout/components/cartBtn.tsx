@@ -65,7 +65,7 @@ const CartBtn = () => {
           </div>
         )}
         {cart.length > 0 && (
-          <div className="flex max-h-[300px] flex-col gap-4 overflow-y-auto py-4">
+          <div className="flex max-h-[300px] flex-col gap-4 overflow-y-auto py-4 text-black">
             {cart.map((item) => (
               <div
                 className="flex gap-2 rounded-2xl bg-[#f5f5f5] p-2"
@@ -88,7 +88,7 @@ const CartBtn = () => {
                 </Link>
                 <div className="flex w-16 flex-col items-start">
                   <Trash2
-                    className="mb-1 ml-2 h-3 w-3 cursor-pointer self-end"
+                    className="mb-1 ml-2 h-3 w-3 cursor-pointer self-end text-alarm-100"
                     onClick={() => removeFromCart(item._id)}
                   />
                   <p className="text-sm text-secondary-100">{item.price}</p>

@@ -5,7 +5,7 @@ import CategorySlider from "./categorySlider";
 
 const CategoriesSlider = () => {
   const { data, isSuccess } = useQuery({
-    queryKey: ["subcategories"],
+    queryKey: ["homeSubcategories"],
     queryFn: () => getAllSubcategory(6),
   });
   return (
