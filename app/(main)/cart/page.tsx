@@ -132,8 +132,14 @@ const CartPage = () => {
                   </p>
                 </div>
               </div>
-              <Link href={"/checkout"}>
-                <Button className="w-full rounded-xl border border-black bg-primary-100 py-3 shadow-[3px_4px_0_0_#15121D]">
+              <Link
+                className="scroll-smooth"
+                href={cart.length > 0 ? "/checkout" : "#"}
+              >
+                <Button
+                  disabled={cart.length < 1}
+                  className="w-full rounded-xl border border-black bg-primary-100 py-3 shadow-[3px_4px_0_0_#15121D] disabled:bg-gray-200"
+                >
                   تکمیل سفارش
                 </Button>
               </Link>
