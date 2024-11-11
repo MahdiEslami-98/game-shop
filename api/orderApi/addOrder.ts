@@ -6,7 +6,7 @@ import { IAddOrderReq, IAddOrderRes } from "@/types/api/order";
 
 const addOrder = async (data: IAddOrderReq) => {
   try {
-    const response = await axiosInstance.post<IAddOrderReq, IAddOrderRes>(
+    const response: AxiosResponse<IAddOrderRes> = await axiosInstance.post(
       apiRoutes.orders,
       data,
       {
