@@ -1,5 +1,7 @@
+import ResultPageSkeleton from "@/components/skeletons/resultPageSkeleton";
+
 const PayoutPage = () => {
-  return <div>PayoutPage</div>;
+  return <ResultPageSkeleton />;
 };
 
 export default PayoutPage;
